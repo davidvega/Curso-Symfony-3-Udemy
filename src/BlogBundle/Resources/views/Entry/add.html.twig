@@ -1,0 +1,13 @@
+{% extends "BlogBundle::layout.html.twig"%}
+{% block menu %}
+    {% include "BlogBundle:Category:menu_categories.html.twig" with {'categories': categories} %}
+{% endblock %}
+{% block content %}
+    <div class="col-lg-6">
+    <h2>Añadir Entradas</h2>
+    
+    {{form_start(form, {'enctype':'multipart/form-data'})}}
+    {{form_end(form)}}
+    </div>
+    <div class="clearfix"></div>
+{% endblock %}

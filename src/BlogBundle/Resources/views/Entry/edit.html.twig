@@ -1,0 +1,21 @@
+{% extends "BlogBundle::layout.html.twig"%}
+{% block menu %}
+    {% include "BlogBundle:Category:menu_categories.html.twig" with {'categories': categories} %}
+{% endblock %}
+{% block content %}
+    <div class="col-lg-6">
+    <h2>Editar Entrada</h2>
+    
+    {{form_start(form, { 'enctype':'multipart/form-data'})}}
+    <label>Imagen: </label> <img width="200" src="{{asset("uploads/"~entry.image)}}"/>
+        {{form_widget(form.image)}}
+        <label>Etiquetas</label>
+        {# elimina espacios en blanco al princio y fin #}
+        {% set tags_clean_esp = tags|trim(" ")%}
+        {# elimina comas al princio y fin #}
+        {% set tags_clean_com = tags_clean_esp|trim(",")%}
+        {{form_widget(form.tags, {'value': tags_clean_com})}}
+    {{form_end(form)}}
+    </div>
+    <div class="clearfix"></div>
+{% endblock %}
